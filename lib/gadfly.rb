@@ -5,26 +5,26 @@ module Gadfly
     raise('script not found') unless File.exists?("#{script_name}.rb")
 
     start_script = <<-eos
-      #!/bin/bash
+#!/bin/bash
 
-      set -u
-      set -e
+set -u
+set -e
 
-      INIT_RBENV='export PATH=$PATH:$HOME/.rbenv/bin; eval "$(rbenv init -)"'
+INIT_RBENV='export PATH=$PATH:$HOME/.rbenv/bin; eval "$(rbenv init -)"'
 
-      CMD="$INIT_RBENV; cd '#{Dir.pwd}'; bundle exec ruby #{script_name}.rb"
+CMD="$INIT_RBENV; cd '#{Dir.pwd}'; bundle exec ruby #{script_name}.rb"
 
-      su - #{ENV['USER']} -c "$CMD";
+su - #{ENV['USER']} -c "$CMD";
     eos
 
     conf = <<-eos
-      description "#{script_name}"
+description "#{script_name}"
 
-      start on (local-filesystems and net-device-up IFACE=eth0)
-      stop on runlevel [016]
+start on (local-filesystems and net-device-up IFACE=eth0)
+stop on runlevel [016]
 
-      console log
-      exec #{Dir.pwd}/start_script
+console log
+exec #{Dir.pwd}/start_script
     eos
 
     `bundle`
