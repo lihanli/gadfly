@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+require 'gadfly'
+Gadfly.install_upstart_script(ARGV[0])
