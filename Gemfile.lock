@@ -14,6 +14,7 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    rake (10.0.4)
     slop (3.4.4)
     turn (0.9.6)
       ansi
@@ -25,4 +26,5 @@ DEPENDENCIES
   gadfly!
   minitest (= 4.7.1)
   pry
+  rake
   turn

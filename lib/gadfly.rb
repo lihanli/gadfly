@@ -1,8 +1,17 @@
 module Gadfly
   INIT_DIR = '/etc/init'
 
+  module Helpers
+    def self.command?(command)
+      system("which #{command} > /dev/null 2>&1")
+    end
+  end
+
   def self.install_upstart_script(script_name)
+    script_name = script_name.gsub('.rb', '')
+
     raise('script not found') unless File.exists?("#{script_name}.rb")
+    raise('upstart not installed') unless Helpers.command?('start') && Helpers.command?('stop')
 
     start_script = <<-eos
 #!/bin/bash
