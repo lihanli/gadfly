@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -u
+set -e
+
+INIT_RBENV='export PATH=$PATH:$HOME/.rbenv/bin; eval "$(rbenv init -)"'
+
+CMD="$INIT_RBENV; cd '/vagrant/test'; bundle exec ruby foobar.rb"
+
+su - vagrant -c "$CMD";

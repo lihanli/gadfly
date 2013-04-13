@@ -3,4 +3,5 @@ gem "minitest", "4.7.1"
 gem 'pry'
 gem 'turn'
 gem 'rake'
+gem 'selenium-webdriver'
 gemspec
