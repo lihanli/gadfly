@@ -9,8 +9,9 @@ Converts your ruby script into an upstart daemon.
 ## Usage
 
 ```
+$ gem install gadfly
 $ cd /path/to/project
-$ bundle exec gadfly your_scripts_name.rb
+$ gadfly your_scripts_name.rb
 ```
 
 ## Troubleshooting
