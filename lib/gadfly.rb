@@ -8,10 +8,14 @@ module Gadfly
   end
 
   def self.install_upstart_script(script_name)
+    if script_name.nil?
+      return puts('Usage: gadfly <name_of_script>')
+    end
+
     script_name = script_name.gsub('.rb', '')
 
     raise('script not found') unless File.exists?("#{script_name}.rb")
-    raise('upstart not installed') unless Helpers.command?('start') && Helpers.command?('stop')
+    raise('upstart not installed') unless `start --version`.include?('upstart')
 
     start_script = <<-eos
 #!/bin/bash

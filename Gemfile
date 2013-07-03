@@ -4,4 +4,5 @@ gem 'pry'
 gem 'turn'
 gem 'rake'
 gem 'selenium-webdriver'
+gem 'gadfly', path: '.'
 gemspec

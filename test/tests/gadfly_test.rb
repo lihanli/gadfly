@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'turn'
+require 'pry'
 require 'selenium-webdriver'
 Turn.config.format = :pretty
 
@@ -20,7 +21,7 @@ class GadflyTest < MiniTest::Unit::TestCase
   def test_gadfly
     Dir.chdir('test')
     system("sudo rm #{LOG_FILE}") if File.exists?(LOG_FILE)
-    assert_equal(true, `../bin/gadfly foobar`.include?('foobar start/running, process'))
+    assert_equal(true, `bundle exec ../bin/gadfly foobar`.include?('foobar start/running, process'))
 
     wait_until { File.exists?(LOG_FILE) }
     assert_equal('foobar', `sudo cat #{LOG_FILE}`.chomp)
