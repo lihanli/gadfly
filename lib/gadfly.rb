@@ -1,13 +1,8 @@
 module Gadfly
+  module_function
   INIT_DIR = '/etc/init'
 
-  module Helpers
-    def self.command?(command)
-      system("which #{command} > /dev/null 2>&1")
-    end
-  end
-
-  def self.install_upstart_script(script_name)
+  def install_upstart_script(script_name)
     if script_name.nil?
       return puts('Usage: gadfly <name_of_script>')
     end
